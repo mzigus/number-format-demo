@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NumberComponent } from './number/number.component';
+import {FormsModule} from '@angular/forms';
+import { AutonumericDirective } from './autonumeric.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NumberComponent
+    NumberComponent,
+    AutonumericDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

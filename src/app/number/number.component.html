@@ -1,24 +1,54 @@
-
-<h2>{{locale}}</h2>
-<table class="table table-sm">
-  <tr>
-    <th>Source</th>
-    <th>{{locale}}</th>
-    <td>input</td>
-  </tr>
+<div class="card">23.00
 
 
-  <tr *ngFor="let number of numbers">
-    <th>
+  <div class="card-body">
+    <h4 class="card-title">{{locale}}</h4>
+    <h4>locale: {{example}}</h4>
 
-      {{number}}
-    </th>
-    <td>
-      {{number.toLocaleString(locale)}}
-    </td>
-    <td>
-      <input type="text" (input)="handleInputValue($event)"/>
-    </td>
-  </tr>
+    <pre>{{configs['a']|json}}</pre>
+    <input type="text"
+           tabindex="1"
+           autonumeric
+           [locale]="locale"
+           [minValue]="0"
+           [isThousandSeparator]="true"
+           (exportConfig)="setConfigs('a', $event)">
 
-</table>
+    <hr>
+
+    <pre>{{configs['b']|json}}</pre>
+
+    <input
+      type="text"
+      tabindex="1"
+      autonumeric
+      [locale]="locale"
+      [isThousandSeparator]="false"
+      (exportConfig)="setConfigs('b', $event)">
+    <hr>
+
+    <pre>{{configs['c']|json}}</pre>
+
+    <input
+      type="text"
+      tabindex="1"
+      autonumeric
+      [locale]="locale"
+      [decimalPlaces]="3"
+      [isThousandSeparator]="false"
+      (exportConfig)="setConfigs('c', $event)">
+
+
+    <pre>{{configs['d']|json}}</pre>
+
+    <input
+      type="text"
+      tabindex="1"
+      autonumeric
+      [locale]="locale"
+      [decimalPlaces]="7"
+      [isThousandSeparator]="false"
+      (exportConfig)="setConfigs('d', $event)">
+  </div>
+</div>
+
