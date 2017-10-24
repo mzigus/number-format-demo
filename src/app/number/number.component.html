@@ -1,0 +1,24 @@
+
+<h2>{{locale}}</h2>
+<table class="table table-sm">
+  <tr>
+    <th>Source</th>
+    <th>{{locale}}</th>
+    <td>input</td>
+  </tr>
+
+
+  <tr *ngFor="let number of numbers">
+    <th>
+
+      {{number}}
+    </th>
+    <td>
+      {{number.toLocaleString(locale)}}
+    </td>
+    <td>
+      <input type="text" (input)="handleInputValue($event)"/>
+    </td>
+  </tr>
+
+</table>
