@@ -1,5 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import AutoNumeric from 'autonumeric/src/main.js';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
 
 @Directive({
   selector: '[autonumeric]'
@@ -13,6 +15,7 @@ export class AutonumericDirective implements OnInit {
   @Input() decimalPlaces = 0;
 
   @Output() exportConfig: EventEmitter<any> = new EventEmitter(null);
+  @Output() rawValue: EventEmitter<number> = new EventEmitter(null);
 
   decimalSeparator() {
     const separator = (1.1).toLocaleString(this.locale).substring(1, 2);
@@ -62,6 +65,11 @@ export class AutonumericDirective implements OnInit {
     this.exportConfig.emit(config);
 
     const field = new AutoNumeric(this.element.nativeElement, config);
+
+
+    Observable.fromEvent(this.element.nativeElement, 'input').subscribe(() => {
+      this.rawValue.emit(field.rawValue);
+    });
   }
 
 }

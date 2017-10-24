@@ -14,6 +14,7 @@ export class NumberComponent implements OnInit {
   example: any;
 
   configs: { [key: string]: any } = {};
+  inputs: { [key: string]: any } = {};
 
   ngOnInit(): void {
 
@@ -33,4 +34,7 @@ export class NumberComponent implements OnInit {
 
   }
 
+  parseResult(v: any) {
+    return parseFloat(v);
+  }
 }

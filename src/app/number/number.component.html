@@ -1,4 +1,4 @@
-<div class="card">23.00
+<div class="card">
 
 
   <div class="card-body">
@@ -6,10 +6,13 @@
     <h4>locale: {{example}}</h4>
 
     <pre>{{configs['a']|json}}</pre>
+    <p>raw: {{inputs['a']}}</p>
     <input type="text"
            tabindex="1"
+           (rawValue)="inputs['a']=$event"
            autonumeric
            [locale]="locale"
+           [decimalPlaces]="2"
            [minValue]="0"
            [isThousandSeparator]="true"
            (exportConfig)="setConfigs('a', $event)">
@@ -17,34 +20,38 @@
     <hr>
 
     <pre>{{configs['b']|json}}</pre>
+    <p>raw: {{inputs['b']}}</p>
 
     <input
       type="text"
       tabindex="1"
       autonumeric
+      (rawValue)="inputs['b']=$event"
       [locale]="locale"
       [isThousandSeparator]="false"
       (exportConfig)="setConfigs('b', $event)">
     <hr>
 
     <pre>{{configs['c']|json}}</pre>
-
+    <p>raw: {{inputs['c']}}</p>
     <input
       type="text"
       tabindex="1"
       autonumeric
+      (rawValue)="inputs['c']=$event"
       [locale]="locale"
       [decimalPlaces]="3"
       [isThousandSeparator]="false"
       (exportConfig)="setConfigs('c', $event)">
 
-
+    <hr>
     <pre>{{configs['d']|json}}</pre>
-
+    <p>raw: {{parseResult(inputs['d'])}}</p>
     <input
       type="text"
       tabindex="1"
       autonumeric
+      (rawValue)="inputs['d']=$event"
       [locale]="locale"
       [decimalPlaces]="7"
       [isThousandSeparator]="false"
